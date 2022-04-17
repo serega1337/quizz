@@ -4,19 +4,25 @@ body {
     font-size: 16px;
     font-family: "Inter", sans-serif;
     margin: 0;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    background: url(../images/blob1.png) top right no-repeat,
+        url(../images/blob2.png) left bottom no-repeat;
 }
 
 h1 {
     font-family: "Karla", sans-serif;
     font-weight: 700;
     font-size: 31.25px;
-    line-height: 37px;
     text-align: center;
-    color: var(--blue);
     margin: 0px 0 15px 0;
 }
+
+h2 {
+    font-family: "Karla", sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+}
+
 h3 {
     font-weight: 400;
     font-size: 16px;
