@@ -4,7 +4,7 @@ function IntroPage({startQuizz}) {
             <h1>Quizzical</h1>
             <h3>Some description if needed</h3>
             <button className="button" onClick={e => startQuizz(e)}>
-                Start quiz
+                Start quizz
             </button>
         </section>
     )

@@ -27,27 +27,29 @@
         background: #d6dbf5;
         border-color: #d6dbf5;
     }
-    &-correct {
+
+    &:disabled {
+        opacity: 0.5;
+        background: none;
+        border-color: var(--blue);
+    }
+    &.answer-correct {
+        opacity: 1;
         background: var(--green);
         border-color: var(--green);
     }
-    &-incorrect {
+    &.answer-incorrect {
         background: var(--red);
         border-color: var(--red);
     }
 }
 
 .questions {
-    display: flex;
-
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     max-width: 600px;
 }
 
 .question {
-    width: 100%;
+    width: calc(100% - 20px);
     padding: 0 10px;
 }
 
@@ -55,5 +57,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+    &__button {
+        border-radius: 15px;
+        padding: 15px 25px;
+        font-family: "Inter";
+        font-weight: 600;
+        font-size: 12px;
+    }
+    &__results {
+        display: flex;
+        margin: 20px 20px;
+        align-items: center;
+        justify-content: space-around;
+    }
 }
