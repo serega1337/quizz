@@ -9,7 +9,7 @@ function Answer({answer, selectAnswer, id, selected, q, result, disabled}) {
                     ? " answer-correct"
                     : " answer-incorrect"
             }`}
-            onClick={e => selectAnswer(e, id, q)}>
+            onClick={() => selectAnswer(id, q)}>
             {answer}
         </button>
     )

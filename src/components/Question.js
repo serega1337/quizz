@@ -5,19 +5,18 @@ function Question({question, answers, selectAnswer, q, disabled}) {
         <div className="question">
             <h2>{question}</h2>
             <div className="answers">
-                {answers &&
-                    answers.map(ans => (
-                        <Answer
-                            selectAnswer={selectAnswer}
-                            selected={ans.selected}
-                            answer={ans.answer}
-                            key={ans.id}
-                            q={q}
-                            id={ans.id}
-                            result={ans.result}
-                            disabled={disabled}
-                        />
-                    ))}
+                {answers.map(ans => (
+                    <Answer
+                        selectAnswer={selectAnswer}
+                        selected={ans.selected}
+                        answer={ans.answer}
+                        key={ans.id}
+                        q={q}
+                        id={ans.id}
+                        result={ans.result}
+                        disabled={disabled}
+                    />
+                ))}
             </div>
         </div>
     )

@@ -3,16 +3,15 @@
     flex-wrap: wrap;
     justify-content: start;
     border-bottom: 2px solid #dbdef0;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .answer {
-    background: none;
-    border-radius: 8px;
     font: 500 12px "Inter";
     color: var(--blue);
-    text-align: center;
+    background: none;
     border: 1px solid var(--blue);
+    border-radius: 8px;
     margin: 10px;
     padding: 3px 15px;
     &:hover {
@@ -21,7 +20,7 @@
     }
     &:active {
         background: #d6dbf5;
-        border-color: #d6dbf5;
+        border-color: #4e5ead;
     }
     &-selected {
         background: #d6dbf5;
@@ -33,11 +32,13 @@
         background: none;
         border-color: var(--blue);
     }
+
     &.answer-correct {
         opacity: 1;
         background: var(--green);
         border-color: var(--green);
     }
+
     &.answer-incorrect {
         background: var(--red);
         border-color: var(--red);
@@ -45,11 +46,11 @@
 }
 
 .questions {
-    max-width: 600px;
+    max-width: 650px;
 }
 
 .question {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 0 10px;
 }
 
@@ -58,17 +59,18 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    &__results {
+        display: flex;
+        margin: 20px 20px;
+        align-items: center;
+        justify-content: space-around;
+        font-weight: 700;
+    }
     &__button {
         border-radius: 15px;
         padding: 15px 25px;
         font-family: "Inter";
         font-weight: 600;
         font-size: 12px;
-    }
-    &__results {
-        display: flex;
-        margin: 20px 20px;
-        align-items: center;
-        justify-content: space-around;
     }
 }

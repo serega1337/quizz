@@ -4,12 +4,12 @@ import Quizz from "./Quizz"
 import "../styles/index.scss"
 
 function App() {
-    const [kek, setKek] = useState(true)
+    const [startQuizz, setstartQuizz] = useState(true)
 
-    return (
-        <main>
-            {kek ? <IntroPage startQuizz={() => setKek(false)} /> : <Quizz />}
-        </main>
+    return startQuizz ? (
+        <IntroPage startQuizz={() => setstartQuizz(false)} />
+    ) : (
+        <Quizz />
     )
 }
 

@@ -1,9 +1,7 @@
 import {useState, useEffect} from "react"
+import LoadingSpinner from "./LoadingSpinner"
 import Question from "./Question"
-const API_URL =
-    "https://opentdb.com/api.php?amount=10&category=31&category=24&type=multiple"
-// "https://opentdb.com/api.php?amount=5&category=18&difficulty=easy&type=multiple"
-// "https://opentdb.com/api.php?amount=10&category=31&type=multiple"
+const API_URL = "https://opentdb.com/api.php?amount=5&type=multiple"
 
 function Quizz() {
     const [loading, setLoading] = useState(false)
@@ -22,9 +20,6 @@ function Quizz() {
         }
         setLoading(false)
     }
-    useEffect(() => {
-        getQuestions()
-    }, [])
 
     function createQuestions(questions) {
         setCorrectAnswers(0)
@@ -62,7 +57,7 @@ function Quizz() {
         setQuestions(newQuestions)
     }
 
-    function selectAnswer(e, answerId, qId) {
+    function selectAnswer(answerId, qId) {
         setQuestions(prevState =>
             prevState.map(q =>
                 q.idx !== qId
@@ -78,17 +73,6 @@ function Quizz() {
             )
         )
     }
-
-    const questionArray = questions.map(({question, answers}, idx) => (
-        <Question
-            question={question.replace(/&quot;/g, '"')}
-            answers={answers}
-            key={idx}
-            q={idx}
-            selectAnswer={selectAnswer}
-            disabled={resultScreen}
-        />
-    ))
 
     function getResults() {
         setQuestions(prevState =>
@@ -114,7 +98,22 @@ function Quizz() {
         setResultScreen(false)
     }
 
-    if (loading) return <div className="loading-spinner"></div>
+    useEffect(() => {
+        getQuestions()
+    }, [])
+
+    if (loading) return <LoadingSpinner />
+
+    const questionArray = questions.map(({question, answers}, idx) => (
+        <Question
+            question={question.replace(/&quot;/g, '"')}
+            answers={answers}
+            key={idx}
+            q={idx}
+            selectAnswer={selectAnswer}
+            disabled={resultScreen}
+        />
+    ))
 
     return (
         <section className="quizz">
