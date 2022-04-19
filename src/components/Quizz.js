@@ -1,22 +1,24 @@
 import {useState, useEffect} from "react"
 import LoadingSpinner from "./LoadingSpinner"
 import Question from "./Question"
-const API_URL =
-    "https://opentdb.com/api.php?amount=5&type=multiple&encode=base64"
 
-function Quizz() {
+function Quizz({amountOfQuestions}) {
     const [loading, setLoading] = useState(false)
     const [questions, setQuestions] = useState([])
     const [resultScreen, setResultScreen] = useState(false)
     const [correctAnswers, setCorrectAnswers] = useState(0)
+
     useEffect(() => {
         getQuestions()
     }, [])
 
+    const API_URL = amount =>
+        `https://opentdb.com/api.php?type=multiple&encode=base64&amount=${amount}`
+
     async function getQuestions() {
         setLoading(true)
         try {
-            const response = await fetch(API_URL)
+            const response = await fetch(API_URL(amountOfQuestions))
             const data = await response.json()
             createQuestions(data?.results)
         } catch (err) {
@@ -43,7 +45,7 @@ function Quizz() {
                 }))
 
                 ;(function swapAnswer() {
-                    const idx = (Math.random() * 4) >> 0
+                    const idx = (Math.random() * answers.length) >> 0
                     const lastIdx = answers.length - 1
                     ;[answers[idx], answers[lastIdx]] = [
                         answers[lastIdx],

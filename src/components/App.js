@@ -5,11 +5,16 @@ import "../styles/index.scss"
 
 function App() {
     const [startQuizz, setstartQuizz] = useState(true)
+    const [amountOfQuestions, setAmountOfQuestions] = useState(5)
 
     return startQuizz ? (
-        <IntroPage startQuizz={() => setstartQuizz(false)} />
+        <IntroPage
+            startQuizz={() => setstartQuizz(false)}
+            amountOfQuestions={amountOfQuestions}
+            setAmountOfQuestions={setAmountOfQuestions}
+        />
     ) : (
-        <Quizz />
+        <Quizz amountOfQuestions={amountOfQuestions} />
     )
 }
 
