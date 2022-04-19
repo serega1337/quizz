@@ -3,7 +3,7 @@ function IntroPage({startQuizz}) {
         <section className="intro-page">
             <h1>Quizzical</h1>
             <h3>Some description if needed</h3>
-            <button className="button" onClick={e => startQuizz(e)}>
+            <button className="button" onClick={() => startQuizz()}>
                 Start quizz
             </button>
         </section>

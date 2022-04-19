@@ -1,13 +1,17 @@
 import {useState, useEffect} from "react"
 import LoadingSpinner from "./LoadingSpinner"
 import Question from "./Question"
-const API_URL = "https://opentdb.com/api.php?amount=5&type=multiple"
+const API_URL =
+    "https://opentdb.com/api.php?amount=5&type=multiple&encode=base64"
 
 function Quizz() {
     const [loading, setLoading] = useState(false)
     const [questions, setQuestions] = useState([])
     const [resultScreen, setResultScreen] = useState(false)
     const [correctAnswers, setCorrectAnswers] = useState(0)
+    useEffect(() => {
+        getQuestions()
+    }, [])
 
     async function getQuestions() {
         setLoading(true)
@@ -31,22 +35,22 @@ function Quizz() {
                         correct: false
                     })),
                     {answer: correct_answer, correct: true}
-                ].map((ans, i) => {
-                    return {
-                        ...ans,
-                        selected: false,
-                        id: ans.answer + i,
-                        result: ""
-                    }
-                })
+                ].map((ans, i) => ({
+                    ...ans,
+                    selected: false,
+                    id: ans.answer + i,
+                    result: ""
+                }))
+
                 ;(function swapAnswer() {
-                    const idx = Math.floor(Math.random() * 4)
+                    const idx = (Math.random() * 4) >> 0
                     const lastIdx = answers.length - 1
                     ;[answers[idx], answers[lastIdx]] = [
                         answers[lastIdx],
                         answers[idx]
                     ]
                 })()
+
                 return {
                     answers,
                     question,
@@ -98,15 +102,11 @@ function Quizz() {
         setResultScreen(false)
     }
 
-    useEffect(() => {
-        getQuestions()
-    }, [])
-
     if (loading) return <LoadingSpinner />
 
     const questionArray = questions.map(({question, answers}, idx) => (
         <Question
-            question={question.replace(/&quot;/g, '"')}
+            question={question}
             answers={answers}
             key={idx}
             q={idx}
