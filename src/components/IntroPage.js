@@ -1,15 +1,19 @@
 function IntroPage({startQuizz, amountOfQuestions, setAmountOfQuestions}) {
+    function handleChange(e) {
+        let val = e.target.value
+        // if (val <= 50 && val > 0) setAmountOfQuestions(val)
+        setAmountOfQuestions(val)
+    }
     return (
         <section className="intro-page">
             <h1>Quizzical</h1>
-            <h3>
-                Number of Questions :
+            <h3 className="intro-page__title">
+                <h3>Number of Questions :</h3>
                 <input
-                    inputmode="numeric"
-                    type="number"
                     value={amountOfQuestions}
                     className="intro-page__input"
-                    onChange={e => setAmountOfQuestions(e.target.value)}
+                    inputmode="numeric"
+                    onChange={e => handleChange(e)}
                     min="1"
                     max="50"
                 />

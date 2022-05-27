@@ -37,13 +37,14 @@ function Quizz({amountOfQuestions}) {
                         correct: false
                     })),
                     {answer: correct_answer, correct: true}
-                ].map((ans, i) => ({
+                ].map(ans => ({
                     ...ans,
                     selected: false,
-                    id: ans.answer + i,
+                    id: ans.answer,
                     result: ""
                 }))
 
+                // swap last (correct) answer with random one
                 ;(function swapAnswer() {
                     const idx = (Math.random() * answers.length) >> 0
                     const lastIdx = answers.length - 1

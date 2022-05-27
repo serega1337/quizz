@@ -19,7 +19,7 @@ module.exports = {
     output: {
         assetModuleFilename: "images/[hash][ext][query]",
         clean: true,
-        path: path.resolve(__dirname, "dist")
+        path: path.resolve(__dirname, "docs")
     },
     module: {
         rules: [
