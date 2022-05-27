@@ -1,5 +1,6 @@
 {
     "private": true,
+    "homepage": "https://github.com/serega1337/quizz",
     "scripts": {
         "start": "webpack serve --open",
         "watch": "webpack --watch",
